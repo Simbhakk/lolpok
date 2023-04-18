@@ -17,7 +17,7 @@ botStartTime = time.time()
 
 
 print("Successfully deployed!")
-print("By Mr. Invisible • ")
+print("By Mr. Invisible ")
 
 if __name__ == "__main__":
     from . import bot
