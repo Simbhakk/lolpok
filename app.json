@@ -1,18 +1,17 @@
 {
-
-    "name": "Save restricted content bot",
-    "description": "Telegram bot to save restricted content.",
+    "name": "Bot Telegram",
+    "description": "Telegram Best bot.",
     "logo": "",
     "keywords": [
         "telegram",
-        "Save restricted content",
+        "Eseva",
         "bot"
     ],
-    "repository": "https://github.com/187dasharath/savebotworking",
+    "repository": "https://github.com/Amanraj654",
     "website": "",
-    "success_url": "https://t.me/save_restricted",
+    "success_url": "https://t.me/Raj02_bots",
     "env": {
-            "API_HASH": {
+        "API_HASH": {
             "description": "Your API HASH from my.telegram.org",
             "value": ""
         },
@@ -37,5 +36,12 @@
             "value": ""
         }
     },
-    "stack": "container"
-}    
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        },
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+        }
+    ]
+}
