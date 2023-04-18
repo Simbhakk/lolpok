@@ -65,7 +65,6 @@ async def progress_for_pyrogram(
             pass
 
 
-
 def humanbytes(size):
     if not size:
         return ""
