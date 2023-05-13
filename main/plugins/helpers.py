@@ -6,7 +6,7 @@ from telethon import errors, events
 import asyncio, subprocess, re, os, time
 from pathlib import Path
 from datetime import datetime as dt
-import math
+#import math
 import cv2
 
 from telethon.errors.rpcerrorlist import UserNotParticipantError
@@ -63,36 +63,6 @@ async def force_sub(client, channel, id, ft):
     return s, r
 
 #------------------------------
-def TimeFormatter(milliseconds) -> str:
-    milliseconds = int(milliseconds) * 1000
-    seconds, milliseconds = divmod(int(milliseconds), 1000)
-    minutes, seconds = divmod(seconds, 60)
-    hours, minutes = divmod(minutes, 60)
-    days, hours = divmod(hours, 24)
-    tmp = (
-        (f"{str(days)}d, " if days else "")
-        + (f"{str(hours)}h, " if hours else "")
-        + (f"{str(minutes)}m, " if minutes else "")
-        + (f"{str(seconds)}s, " if seconds else "")
-        + (f"{str(milliseconds)}ms, " if milliseconds else "")
-    )
-    return tmp[:-2]
-
-#--------------------------------------------
-def humanbytes(size):
-    size = int(size)
-    # https://stackoverflow.com/a/49361727/4723940
-    # 2**10 = 1024
-    if not size:
-        return ""
-    power = 2**10
-    n = 0
-    Dic_powerN = {0: ' ', 1: 'Ki', 2: 'Mi', 3: 'Gi', 4: 'Ti'}
-    while size > power:
-        size /= power
-        n += 1
-    return f"{str(round(size, 2))} {Dic_powerN[n]}B"
-
 
 #Regex---------------------------------------------------------------------------------------------------------------
 #to get the url from event
