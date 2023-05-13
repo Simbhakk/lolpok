@@ -2,9 +2,7 @@ import math
 import os
 import time
 import json
-from main.plugins.helpers import TimeFormatter, humanbytes
 
-#------
 FINISHED_PROGRESS_STR = "█"
 UN_FINISHED_PROGRESS_STR = ""
 DOWNLOAD_LOCATION = "/app"
@@ -22,7 +20,7 @@ async def progress_for_pyrogram(
     diff = now - start
     if round(diff % 10.00) == 0 or current == total:
         percentage = current * 100 / total
-        status = f"{DOWNLOAD_LOCATION}/status.json"
+        status = DOWNLOAD_LOCATION + "/status.json"
         if os.path.exists(status):
             with open(status, 'r+') as f:
                 statusMsg = json.load(f)
@@ -36,31 +34,32 @@ async def progress_for_pyrogram(
         elapsed_time = TimeFormatter(milliseconds=elapsed_time)
         estimated_total_time = TimeFormatter(milliseconds=estimated_total_time)
 
-        progress = "**[{0}{1}]**".format(
-            ''.join(                
-                    FINISHED_PROGRESS_STR
-                    for _ in range(math.floor(percentage / 10))                
-            ),
-            ''.join(                
-                    UN_FINISHED_PROGRESS_STR
-                    for _ in range(10 - math.floor(percentage / 10))               
-            ),
-        )  
+        progress = "**[{0}{1}]** `| {2}%`\n\n".format(
+            ''.join([FINISHED_PROGRESS_STR for i in range(math.floor(percentage / 10))]),
+            ''.join([UN_FINISHED_PROGRESS_STR for i in range(10 - math.floor(percentage / 10))]),
+            round(percentage, 2))
 
-        tmp = progress + "\n├ GROSS: {0} of {1}\n\n├ SPEED: {2}/s\n\n├ ETA: {3}\n".format(
+        tmp = progress + "GROSSS: {0} of {1}\n\nSpeed: {2}/s\n\nETA: {3}\n".format(
             humanbytes(current),
             humanbytes(total),
             humanbytes(speed),
             estimated_total_time if estimated_total_time != '' else "0 s"
         )
         try:
-            text = f"{ud_type}\n {tmp}"
-            if message.text != text or message.caption != text:
-                if not message.photo:
-                    await message.edit_text(text=f"{ud_type}\n {tmp}")
-
-                else:
-                    await message.edit_caption(caption=f"{ud_type}\n {tmp}")
+            if not message.photo:
+                await message.edit_text(
+                    text="{}\n {}".format(
+                        ud_type,
+                        tmp
+                    )
+                )
+            else:
+                await message.edit_caption(
+                    caption="{}\n {}".format(
+                        ud_type,
+                        tmp
+                    )
+                )
         except:
             pass
 
