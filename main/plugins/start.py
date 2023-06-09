@@ -42,7 +42,7 @@ async def remt(event):
   
 @Invix.on(events.NewMessage(incoming=True, pattern=f"{S}"))
 async def start(event):
-    text = "👋 Hi, I am 'Save Restricted Bot.Thanks for purchasing Bot.\n\nPress /batch for 200 message at a click \nMust join :- @Bypass_Restricted"
+    text = "👋 Hi, I am 'Save Restricted Bot. \n For bulk downloading..press /bulk..then first video link ..then no of files like 100,150,200."
     #await start_srb(event, text)
     await event.reply(text, 
                       buttons=[
