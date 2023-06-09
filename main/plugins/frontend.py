@@ -4,7 +4,7 @@ import time, os
 
 import logging
 from .. import bot as Invix
-from .. import userbot, Bot
+from .. import userbot, Bot, SUDO_USERS
 from .. import FORCESUB as fs
 from main.plugins.pyroplug import get_msg
 from main.plugins.helpers import get_link, join, screenshot
@@ -31,7 +31,7 @@ user=[]
 
  
 
-@Invix.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
+@Invix.on(events.NewMessage(incoming=True, from_users=SUDO_USERS, func=lambda e: e.is_private))
 async def clone(event):
     logging.info(event)
     file_name = ''
