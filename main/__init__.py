@@ -1,5 +1,5 @@
 #Github.com/mrinvisible7
-
+import os
 from pyrogram import Client
 
 from telethon.sessions import StringSession
@@ -13,14 +13,23 @@ logging.basicConfig(level=logging.DEBUG,
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 logging.getLogger("telethon").setLevel(logging.WARNING)
 
-
+shorteneres_list = []
+if os.path.exists('shorteners.txt'):
+    with open('shorteners.txt', 'r+') as f:
+        lines = f.readlines()
+        for line in lines:
+            temp = line.strip().split()
+            if len(temp) == 2:
+                shorteneres_list.append({'domain': temp[0],'api_key': temp[1]})
+              
 # variables
-API_ID = config("API_ID", default=None, cast=int)
-API_HASH = config("API_HASH", default=None)
-BOT_TOKEN = config("BOT_TOKEN", default=None)
-SESSION = config("SESSION", default=None)
-FORCESUB = config("FORCESUB", default=None)
-AUTH = config("AUTH", default=None)
+API_ID = ""
+API_HASH = ""
+BOT_TOKEN = ""
+SESSION = ""
+FORCESUB = ""
+AUTH = ""
+TOKEN_TIMEOUT = int('60')
 SUDO_USERS = []
 if len(AUTH) != 0:
     SUDO_USERS = {int(AUTH.strip()) for AUTH in AUTH.split()}
@@ -54,3 +63,5 @@ except Exception as e:
     #print(e)
     logger.info(e)
     sys.exit(1)
+
+bot_name = Bot.me.username
