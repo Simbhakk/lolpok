@@ -23,12 +23,12 @@ if os.path.exists('shorteners.txt'):
                 shorteneres_list.append({'domain': temp[0],'api_key': temp[1]})
               
 # variables
-API_ID = 23365392
-API_HASH = "fffdba007ae9e02207be11b8d8d3f2a8"
-BOT_TOKEN = "6230201670:AAGhdV_eUSVfY8ke4SzyoICY1Cd6uqW7Ig4"
-SESSION = "BQFkhxAAQhWS-W01QfLC0k3TCc0YInTn9jEsPgQnpsJiH-7heQG2rNRlRdzYA_MjaMK1thfA4fruS4KR2g-uVmhrHkVPYUZUQRP7PkNIRPWD4Rdb2_fnYNdMub7GVIGHddEmKIynp3_55eB4fLxo44HHGlYJJIh9sL46W_TXZqh_fC9hK6TnXhbc8dHpDegySDHAR3TptNP8imW3MmN0Ao3nZhFJEjWL1oZmCBcM1Jpf0tk8ZUxAEmTfOMbKXERy8mRb5xG1K3qn6SZ3L9Wz9y-Vd5j8m8AEl6fm5RgifPBfoYHysc2Q6j2PmFjeqg7KmvN7m96zqBcwlXrVK-Vzfh9KHlPfjgAAAAFXLOnjAA"
-FORCESUB = "paid_userl"
-AUTH = '5757528547'
+API_ID = config("API_ID", default=None, cast=int)
+API_HASH = config("API_HASH", default=None)
+BOT_TOKEN = config("BOT_TOKEN", default=None)
+SESSION = config("SESSION", default=None)
+FORCESUB = config("FORCESUB", default=None)
+AUTH = config("AUTH", default=None)
 TOKEN_TIMEOUT = int('60')
 SUDO_USERS = []
 if len(AUTH) != 0:
