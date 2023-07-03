@@ -4,7 +4,7 @@ import time, os
 import logging
 from short import short_url
 from .. import bot as Invix
-from .. import userbot, Bot, SUDO_USERS, TOKEN_TIMEOUT, bot_name
+from .. import userbot, Bot, TOKEN_TIMEOUT, bot_name
 from .. import FORCESUB as fs
 from main.plugins.pyroplug import get_msg
 from main.plugins.helpers import get_link, join, screenshot
@@ -51,7 +51,7 @@ async def checking_access(event):
             return False
     return True, None
 
-@Invix.on(events.NewMessage(incoming=True, from_users=SUDO_USERS, func=lambda e: e.is_private))
+@Invix.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
 async def clone(event):
     user_id = event.sender_id
     logging.info(event)
