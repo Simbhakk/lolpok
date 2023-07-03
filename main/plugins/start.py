@@ -1,7 +1,12 @@
 #Github.com/mrinvisible7
 
+from time import time
+from uuid import uuid4
+from pyrogram import Client, filters, enums
 import os
-from .. import bot as Invix
+from button_build import ButtonMaker
+from .. import bot as Invix, Bot
+from main.plugins.frontend import user_data
 from telethon import events, Button
 
 #from ethon.mystarts import start_srb
@@ -40,15 +45,29 @@ async def remt(event):
     except Exception:
         await event.edit("No thumbnail saved.")                        
   
-@Invix.on(events.NewMessage(incoming=True, pattern=f"{S}"))
-async def start(event):
-    text = "👋 Hi, I am Save Restricted Bot. \n For bulk downloading....Press /bulk .\nthen first video link..then no. of files like 100,150,200."
-    #await start_srb(event, text)
-    await event.reply(text, 
-                      buttons=[
-                              [Button.inline("SET THUMB.", data="set"),
-                               Button.inline("REM THUMB.", data="rem")],        
-                              [Button.url("Maintained and Modified by", url="t.me/Raj02_bots")]])                             
+@Bot.on_message(filters.command("start") & filters.private)
+async def start(_, message):
+    if len(message.command) > 1:
+        userid = message.from_user.id
+        input_token = message.command[1]
+        if userid not in user_data:
+            return await message.reply_text('Who are you?')
+        data = user_data[userid]
+        if 'token' not in data or data['token'] != input_token:
+            return await message.reply_text('This is a token already expired')
+        data['token'] = str(uuid4())
+        data['time'] = time()
+        user_data[userid].update(data)
+        return await message.reply_text('Token refreshed successfully!')    
+    else:
+        text = "👋 Hi, I am Save Restricted Bot. \n For bulk downloading....Press /bulk .\nthen first video link..then no. of files like 100,150,200."
+    #await start_srb(event, text)        
+        buttons = ButtonMaker()             
+        buttons.ibutton("SET THUMB.", "set")
+        buttons.ibutton("REM THUMB.", "rem")
+        buttons.ubutton(f"Maintained and Modified by", f"t.me/Raj02_bots") 
+        reply_markup = buttons.build_menu(2)
+        await message.reply_text(text=text, reply_markup=reply_markup)                             
                               
     '''
     await event.reply(text, 

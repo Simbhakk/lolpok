@@ -1,17 +1,17 @@
 #Github.com/mrinvisible7
 
 import time, os
-
 import logging
+from short import short_url
 from .. import bot as Invix
-from .. import userbot, Bot, SUDO_USERS
+from .. import userbot, Bot, SUDO_USERS, TOKEN_TIMEOUT, bot_name
 from .. import FORCESUB as fs
 from main.plugins.pyroplug import get_msg
 from main.plugins.helpers import get_link, join, screenshot
 
-from telethon import events
+from telethon import events, Button
 from pyrogram.errors import FloodWait
-
+from uuid import uuid4
 #from ethon.telefunc import force_sub
 from main.plugins.helpers import force_sub
 
@@ -28,11 +28,32 @@ message = "Send me the message link you want to start saving from, as a reply to
 process=[]
 timer=[]
 user=[]
+user_data = {}
 
- 
+async def checking_access(event):     
+    user_id = event.sender_id       
+  #  if user_id in SUDO_USERS: 
+     #  return True      
+    if TOKEN_TIMEOUT:
+        user_data.setdefault(user_id, {})
+        data = user_data[user_id]
+        expire = data.get('time')
+        isExpired = expire is None or (expire is not None and (time.time() - expire) > TOKEN_TIMEOUT)
+        if isExpired:
+            token = data.get('token') or str(uuid4())
+            if expire is not None:
+                del data['time']
+            data['token'] = token
+            user_data[user_id].update(data)             
+            await event.reply(f'Verify yourself to Use Me.', 
+                              buttons=[                              
+                              [Button.url("Click Here to Verify", url=short_url(f"https://telegram.me/{bot_name}?start={token}"))]]) 
+            return False
+    return True, None
 
 @Invix.on(events.NewMessage(incoming=True, from_users=SUDO_USERS, func=lambda e: e.is_private))
 async def clone(event):
+    user_id = event.sender_id
     logging.info(event)
     file_name = ''
     if event.is_reply:
@@ -57,6 +78,8 @@ async def clone(event):
         s, r = await force_sub(event.client, fs, event.sender_id, ft)
         if s == True:
             await event.reply(r)
+            return
+        if not await checking_access(event):
             return
         edit = await event.reply("Processing!")
         if "|" in li:
