@@ -60,12 +60,12 @@ async def start(_, message):
         user_data[userid].update(data)
         return await message.reply_text('Token refreshed successfully!')    
     else:
-        text = "👋 Hi, I am Save Restricted Bot. \n For bulk downloading....Press /bulk .\nthen first video link..then no. of files like 100,150,200."
+        text = "👋 Hi, I'm Save Restricted content Bot.\n\n **•FOR PUBLIC CHANNEL** send direct message/videos link.\n**•FOR PRIVATE CHANNEL, first send channel link then message or video link."
     #await start_srb(event, text)        
         buttons = ButtonMaker()             
         buttons.ibutton("SET THUMB.", "set")
         buttons.ibutton("REM THUMB.", "rem")
-        buttons.ubutton(f"Maintained and Modified by", f"t.me/Raj02_bots") 
+        buttons.ubutton(f"How to use bot (click)", f"t.me/Raj02_bots") 
         reply_markup = buttons.build_menu(2)
         await message.reply_text(text=text, reply_markup=reply_markup)                             
                               
