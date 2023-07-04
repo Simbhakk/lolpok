@@ -9,8 +9,8 @@ import logging
 import time, os, asyncio
 
 from .. import bot as Invix
-from .. import userbot, Bot, AUTH, SUDO_USERS
-#from .. import FORCESUB as fs
+from .. import userbot, Bot, SUDO_USERS
+from .. import FORCESUB as fs
 from main.plugins.pyroplug import check, get_bulk_msg
 from main.plugins.helpers import get_link, screenshot
 
@@ -21,34 +21,31 @@ from pyrogram import Client
 from pyrogram.errors import FloodWait
 
 #from ethon.pyfunc import video_metadata
-#from main.plugins.helpers import force_sub
+from ethon.telefunc import force_sub
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 logging.getLogger("telethon").setLevel(logging.WARNING)
-#ft = f"To use this bot you've to join @{fs}."
+ft = f"To use this bot you've to join @{fs}."
 
 batch = []
 ids = []
 
-'''async def get_pvt_content(event, chat, id):
+async def get_pvt_content(event, chat, id):
     msg = await userbot.get_messages(chat, ids=id)
     await event.client.send_message(event.chat_id, msg) 
-'''   
+
 @Invix.on(events.NewMessage(incoming=True, from_users=SUDO_USERS, pattern='/bulk'))
 async def _batch(event):
-    '''
-    #if not event.is_private:
-    #    return
+    if not event.is_private:
+        return
     # wtf is the use of fsub here if the command is meant for the owner? 
     # well am too lazy to clean 
-    #s, r = await force_sub(event.client, fs, event.sender_id, ft) 
-    #if s == True:
-    #   await event.reply(r)
-    #  return       
-    '''
-    s = False
+    s, r = await force_sub(event.client, fs, event.sender_id, ft) 
+    if s == True:
+        await event.reply(ft)
+        return
     if f'{event.sender_id}' in batch:
         return await event.reply("You've already started one batch, wait for it to complete, or cancel the privious ❌!")
     async with Invix.conversation(event.chat_id) as conv: 
