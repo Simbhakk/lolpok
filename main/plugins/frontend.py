@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.INFO)
 logging.getLogger("telethon").setLevel(logging.INFO)
 
-ft = f"JOIN MY UPDATE CHANNEL @Raj02_bots & @{fs} TO USE ME.\n\nAlso join @Save_restricted_contentt"
+ft = f"JOIN MY UPDATE CHANNELS\n@Raj02_bots & @{fs} TO USE ME.\n\nAlso join @Save_restricted_contentt"
 
 message = "Send me the message link you want to start saving from, as a reply to this message."
           
@@ -47,7 +47,8 @@ async def checking_access(event):
             user_data[user_id].update(data)             
             await event.reply(f'Verify yourself to Use Me.', 
                               buttons=[                              
-                              [Button.url("Click Here to Verify", url=short_url(f"https://telegram.me/{bot_name}?start={token}"))]]) 
+                              [Button.url("Click Here to Verify", url=short_url(f"https://telegram.me/{bot_name}?start={token}"))],
+                              [Button.url("How to verify (click)", url="https://telegram.me/Filesharing6bot?start=Z2V0LTEzNzI1ODI3NTIyMDE0NQ")]])  
             return False
     return True, None
 
