@@ -77,7 +77,7 @@ async def clone(event):
             return
         s, r = await force_sub(event.client, fs, event.sender_id, ft)
         if s == True:
-            await event.reply(r)
+            await event.reply(ft)
             return
         if not await checking_access(event):
             return
