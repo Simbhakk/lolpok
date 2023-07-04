@@ -44,7 +44,7 @@ async def check(userbot, client, link):
             return False, "**Invalid Link!**"
         except Exception as e:
             logging.info(e)
-            return False, "send the channel link first"
+            return False, "**First, send the channel/group link** to join bot owner in that channel."
     else:
         try:
             chat = str(link.split("/")[-2])
@@ -52,7 +52,7 @@ async def check(userbot, client, link):
             return True, None
         except Exception as e:
             logging.info(e)
-            return False, "Maybe you are banned from the chat, or your link is invalid!"
+            return False, "Maybe bot owner are banned from the chat, or your link is invalid!"
             
 async def get_msg(userbot, client, sender, edit_id, msg_link, i, file_n):
     edit = ""
@@ -238,10 +238,10 @@ async def get_msg(userbot, client, sender, edit_id, msg_link, i, file_n):
             await upm.delete()
             return None
         except (ChannelBanned, ChannelInvalid, ChannelPrivate, ChatIdInvalid, ChatInvalid):
-            await client.edit_message_text(sender, edit_id, "Bot is not in that channel/ group \n send the invite link so that bot can join the channel ")
+            await client.edit_message_text(sender, edit_id, "**First, send the channel/group link** to join bot owner in that channel.")
             return None
     else:
-        edit = await client.edit_message_text(sender, edit_id, "Cloning.")
+        edit = await client.edit_message_text(sender, edit_id, "**Cloning**")
         chat =  msg_link.split("/")[-2]
         await client.copy_message(int(sender), chat, msg_id)
         await edit.delete()
