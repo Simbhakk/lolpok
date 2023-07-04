@@ -58,7 +58,7 @@ async def start(_, message):
         data['token'] = str(uuid4())
         data['time'] = time()
         user_data[userid].update(data)
-        return await message.reply_text('Token refreshed successfully!')    
+        return await message.reply_text('Token refreshed successfully! For 30 min.')    
     else:
         text = "👋 Hi, I'm Save Restricted content Bot.\n\n**•FOR PUBLIC CHANNEL**\n-Send direct message/videos link from channel.\n~~~~~----~~~~~~\n**•FOR PRIVATE CHANNEL/GROUP**\n-First send channel link then message or video link."
     #await start_srb(event, text)        
