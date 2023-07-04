@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.INFO)
 logging.getLogger("telethon").setLevel(logging.INFO)
 
-ft = f"JOIN MY UPDATE CHANNEL @Bypass_restricted & @{fs} TO USE Me.\n\nAlso join @Save_restricted_contentt"
+ft = f"JOIN MY UPDATE CHANNEL @{fs} & @Bypass_restricted TO USE ME.\n\nAlso join @Save_restricted_contentt"
 
 message = "Send me the message link you want to start saving from, as a reply to this message."
           
@@ -96,12 +96,6 @@ async def clone(event):
         try:
             if 't.me/' not in link:
                 await edit.edit("invalid link")
-                ind = user.index(f'{int(event.sender_id)}')
-                user.pop(int(ind))
-                return
-            if 't.me/+' in link:
-                q = await join(userbot, link)
-                await edit.edit(q)
                 ind = user.index(f'{int(event.sender_id)}')
                 user.pop(int(ind))
                 return
