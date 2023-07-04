@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.INFO)
 logging.getLogger("telethon").setLevel(logging.INFO)
 
-ft = f"JOIN MY UPDATE CHANNEL @{fs} & @Bypass_restricted TO USE ME.\n\nAlso join @Save_restricted_contentt"
+ft = f"JOIN MY UPDATE CHANNEL @Raj02_bots & @{fs} TO USE ME.\n\nAlso join @Save_restricted_contentt"
 
 message = "Send me the message link you want to start saving from, as a reply to this message."
           
@@ -62,8 +62,8 @@ async def clone(event):
             return
     lit=event.text
     li=lit.split("\n")
-    if len(li) > 2:
-        await event.reply("max 2 links per message")
+    if len(li) > 1:
+        await event.reply("max 1 links per message")
         return
     for li in li:
         #1239
