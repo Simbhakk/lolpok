@@ -99,6 +99,12 @@ async def clone(event):
                 ind = user.index(f'{int(event.sender_id)}')
                 user.pop(int(ind))
                 return
+            if 't.me/+' in link:
+                q = await join(userbot, link)
+                await edit.edit(q)
+                ind = user.index(f'{int(event.sender_id)}')
+                user.pop(int(ind))
+                return
             if 't.me/' in link:
                 msg_id = 0
                 try:
