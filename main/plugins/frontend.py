@@ -12,8 +12,8 @@ from main.plugins.helpers import get_link, join, screenshot
 from telethon import events, Button
 from pyrogram.errors import FloodWait
 from uuid import uuid4
-#from ethon.telefunc import force_sub
-from main.plugins.helpers import force_sub
+from ethon.telefunc import force_sub
+#from main.plugins.helpers import force_sub
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -62,8 +62,8 @@ async def clone(event):
             return
     lit=event.text
     li=lit.split("\n")
-    if len(li) > 5:
-        await event.reply("max 5 links per message")
+    if len(li) > 2:
+        await event.reply("max 2 links per message")
         return
     for li in li:
         #1239
@@ -82,6 +82,9 @@ async def clone(event):
         if not await checking_access(event):
             return
         edit = await event.reply("Processing!")
+        if f'{int(event.sender_id)}' in user:
+            return await edit.edit("Please don't spam links, wait until ongoing process is done.")
+        user.append(f'{int(event.sender_id)}')
         if "|" in li:
             url = li
             url_parts = url.split("|")
