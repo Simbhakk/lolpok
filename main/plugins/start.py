@@ -60,7 +60,7 @@ async def start(_, message):
         user_data[userid].update(data)
         return await message.reply_text('Token refreshed successfully! For 30 min.')    
     else:
-        text = "👋 Hi, I'm Save Restricted content Bot.\n\n**•FOR PUBLIC CHANNEL**\n-Send direct message/videos link from channel to clone it.\n~~~~~----~~~~~~\n**•⚠️FOR PRIVATE CHANNEL/GROUP**\n-First send channel link then message or video link to download."
+        text = "👋 Hi, I'm Save Restricted content Bot.\n\n**•FOR PUBLIC CHANNEL**\n-Send direct message/videos link from channel to clone it.\n~~~~~----~~~~~~\n**•⚠️FOR PRIVATE CHANNEL/GROUP**\n-First send channel link then message or video link to download.\n\nNote:- This bot is based on token. Press /help for more info."
     #await start_srb(event, text)        
         buttons = ButtonMaker()             
         buttons.ibutton("SET THUMB.", "set")
