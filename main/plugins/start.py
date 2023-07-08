@@ -51,7 +51,7 @@ async def start(_, message):
         userid = message.from_user.id
         input_token = message.command[1]
         if userid not in user_data:
-            return await message.reply_text('Who are you?')
+            return await message.reply_text('This token is not for you.')
         data = user_data[userid]
         if 'token' not in data or data['token'] != input_token:
             return await message.reply_text('This is a token already expired')
@@ -60,15 +60,19 @@ async def start(_, message):
         user_data[userid].update(data)
         return await message.reply_text('Token refreshed successfully! For 30 min.')    
     else:
-        text = "👋 Hi, I'm Save Restricted content Bot.\n\n**•FOR PUBLIC CHANNEL**\n-Send direct message/videos link from channel.\n~~~~~----~~~~~~\n**•FOR PRIVATE CHANNEL/GROUP**\n-First send channel link then message or video link."
+        text = "👋 Hi, I'm Save Restricted content Bot.\n\n**•FOR PUBLIC CHANNEL**\n-Send direct message/videos link from channel to clone it.\n~~~~~----~~~~~~\n**•⚠️FOR PRIVATE CHANNEL/GROUP**\n-First send channel link then message or video link to download."
     #await start_srb(event, text)        
         buttons = ButtonMaker()             
         buttons.ibutton("SET THUMB.", "set")
         buttons.ibutton("REM THUMB.", "rem")
         buttons.ubutton(f"How to use bot (click)", f"https://telegram.me/Filesharing6bot?start=Z2V0LTEzODI2MDE2MDQ0MDczMA") 
         reply_markup = buttons.build_menu(2)
-        await message.reply_text(text=text, reply_markup=reply_markup)                             
-                              
+        await message.reply_text(text=text, reply_markup=reply_markup)
+        
+@bot.on(events.NewMessage(incoming=True, pattern='/help'))                       
+async def donate(event):
+    text = "**This bot is based on token**\nwhen you send post link to bot. Bot will give you token url. You have to open it.( you can see video ,if you dont now how to open) .\n\nAnd this token will be valid for 30 min. after 30 min. you have to generate new token." 
+    await event.reply(text)                           
     '''
     await event.reply(text, 
                       buttons=[
