@@ -45,10 +45,10 @@ async def checking_access(event):
                 del data['time']
             data['token'] = token
             user_data[user_id].update(data)             
-            await event.reply(f'Verify yourself to Use Me.', 
+            await event.reply(f'Your token has exipred.**Generate new token**', 
                               buttons=[                              
-                              [Button.url("Click Here to Verify", url=short_url(f"https://telegram.me/{bot_name}?start={token}"))],
-                              [Button.url("How to verify (click)", url="https://telegram.me/Filesharing6bot?start=Z2V0LTEzNzI1ODI3NTIyMDE0NQ")]])  
+                              [Button.url("•Click Here to generate•", url=short_url(f"https://telegram.me/{bot_name}?start={token}"))],
+                              [Button.url("How to verify (click)✓", url="https://telegram.me/Filesharing6bot?start=Z2V0LTEzNzI1ODI3NTIyMDE0NQ")]])  
             return False
     return True, None
 
