@@ -69,7 +69,7 @@ async def start(_, message):
         reply_markup = buttons.build_menu(2)
         await message.reply_text(text=text, reply_markup=reply_markup)
         
-@bot.on(events.NewMessage(incoming=True, pattern='/help'))                       
+@Invix.on(events.NewMessage(incoming=True, pattern='/help'))                       
 async def donate(event):
     text = "**This bot is based on token**\nwhen you send post link to bot. Bot will give you token url. You have to open it.( you can see video ,if you dont now how to open) .\n\nAnd this token will be valid for 30 min. after 30 min. you have to generate new token." 
     await event.reply(text)                           
