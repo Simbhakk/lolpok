@@ -12,16 +12,12 @@ from main.plugins.helpers import get_link, join, screenshot
 from telethon import events, Button
 from pyrogram.errors import FloodWait
 from uuid import uuid4
-from ethon.telefunc import force_sub
-#from main.plugins.helpers import force_sub
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.INFO)
 logging.getLogger("telethon").setLevel(logging.INFO)
-
-ft = f"You have to join @{fs} to use me."
 
 message = "Send me the message link you want to start saving from, as a reply to this message."
           
