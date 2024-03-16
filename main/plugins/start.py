@@ -9,11 +9,7 @@ from .. import bot as Invix, Bot
 from main.plugins.frontend import user_data
 from telethon import events, Button
 
-#from ethon.mystarts import start_srb
-    
-S = '/' + 's' + 't' + 'a' + 'r' + 't'
-
-@Bot.on_message(filters.command("start") & filters.private)
+@Bot.on_message(filters.command("start"))
 async def start(_, message):
     if len(message.command) > 1:
         userid = message.from_user.id
@@ -28,7 +24,7 @@ async def start(_, message):
         user_data[userid].update(data)
         return await message.reply_text('Token refreshed successfully! For 30 min.')    
     else:
-        text = "👋 Hi, I'm Save Restricted content Bot.\n\n**•FOR PUBLIC CHANNEL**\n-Send direct message/videos link from channel.\n----------------\n**•FOR PRIVATE CHANNEL/GROUP**\n-Use this bot @Save_Restricted_contentx_Bot"
+        text = "👋 Hi, I am a Save Bot. I can copy messages from PUBLIC RESTRICTED CHANNEL.\n\n**•Send direct message/video link from public channel.\n\n🚨Note- Our bot doesn't copy message from private channel & group."
     #await start_srb(event, text)        
         buttons = ButtonMaker()             
         buttons.ubutton("SOURCE", "https://t.me/Bypass_Restricted/68")
