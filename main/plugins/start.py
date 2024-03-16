@@ -42,7 +42,7 @@ async def token(event):
 @Bot.on(events.NewMessage(incoming=True, pattern=f"help"))
 async def help(event):
     text = "Bot supports message from:- \n Public restricted channel ✅\n Public restricted Group ❌\n Private restricted channel ❌ \n private restricted group ❌"
-    await event.reply(text, 
+    await event.reply(text)
     '''
     await event.reply(text, 
                       buttons=[
