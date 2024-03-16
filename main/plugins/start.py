@@ -5,7 +5,7 @@ from uuid import uuid4
 from pyrogram import Client, filters, enums
 import os
 from button_build import ButtonMaker
-from .. import bot as Bot
+from .. import bot as Invix, Bot
 from main.plugins.frontend import user_data
 from telethon import events, Button
 
