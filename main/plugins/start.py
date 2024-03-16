@@ -32,7 +32,17 @@ async def start(_, message):
         buttons.ubutton("How to use this Bot", "https://telegram.me/Filesharing6bot?start=Z2V0LTEzODI2MDE2MDQ0MDczMA") 
         reply_markup = buttons.build_menu(2)
         await message.reply_text(text=text, reply_markup=reply_markup)                             
-                              
+
+@Bot.on(events.NewMessage(incoming=True, pattern=f"token"))
+async def token(event):
+    text = "♨️ Bot is based on token , So that bot owner can earn some money and you can use bot without time limit. Watch ads , use bot and respect our work."
+    #await start_srb(event, text)
+    await event.reply(text)
+    
+@Bot.on(events.NewMessage(incoming=True, pattern=f"help"))
+async def help(event):
+    text = "Bot supports message from:- \n Public restricted channel ✅\n Public restricted Group ❌\n Private restricted channel ❌ \n private restricted group ❌"
+    await event.reply(text, 
     '''
     await event.reply(text, 
                       buttons=[
