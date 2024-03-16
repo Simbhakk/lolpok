@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.INFO)
 logging.getLogger("telethon").setLevel(logging.INFO)
 
-ft = f"You have to join @{fs} & @Raj02_bots to use me.\n\nAlso join @Save_restricted_contentt"
+ft = f"You have to join @{fs} to use me."
 
 message = "Send me the message link you want to start saving from, as a reply to this message."
           
@@ -45,7 +45,7 @@ async def checking_access(event):
                 del data['time']
             data['token'] = token
             user_data[user_id].update(data)             
-            await event.reply(f'Your token has exipred.\n**Generate new token**', 
+            await event.reply(f'**Generate new token to use me.**', 
                               buttons=[                              
                               [Button.url("Click Here to generate", url=short_url(f"https://telegram.me/{bot_name}?start={token}"))],
                               [Button.url("How to generate(video)", url="https://telegram.me/Filesharing6bot?start=Z2V0LTEzNzI1ODI3NTIyMDE0NQ")]])  
@@ -64,7 +64,7 @@ async def clone(event):
     lit=event.text
     li=lit.split("\n")
     if len(li) > 1:
-        await event.reply("max 1 links per message")
+        await event.reply("max 2 links per message")
         return
     for li in li:
         #1239
@@ -77,7 +77,7 @@ async def clone(event):
         except TypeError:
             return
         s, r = await force_sub(event.client, fs, event.sender_id, ft)
-        if s == True:
+        if s == False:
             await event.reply(ft)
             return
         if not await checking_access(event):
@@ -97,12 +97,6 @@ async def clone(event):
         try:
             if 't.me/' not in link:
                 await edit.edit("invalid link")
-                ind = user.index(f'{int(event.sender_id)}')
-                user.pop(int(ind))
-                return
-            if 't.me/+' in link:
-                q = await join(userbot, link)
-                await edit.edit(q)
                 ind = user.index(f'{int(event.sender_id)}')
                 user.pop(int(ind))
                 return
