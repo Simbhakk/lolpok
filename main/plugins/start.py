@@ -24,12 +24,12 @@ async def start(_, message):
         user_data[userid].update(data)
         return await message.reply_text('Token refreshed successfully! For 30 min.')    
     else:
-        text = "👋 Hi, I am a Save Bot. I can copy messages from PUBLIC RESTRICTED CHANNEL.\n\n**•Send direct message/video link from public channel.\n\n🚨Note- Our bot doesn't copy message from private channel & group."
+        text = "👋**I am a Save Bot. I can copy messages from\nPUBLIC RESTRICTED CHANNEL.**\n•Send message/video link from public channel.\n\n🚨Note:- Our bot doesn't copy message from \nprivate channel/group & public group."
     #await start_srb(event, text)        
         buttons = ButtonMaker()             
-        buttons.ubutton("SOURCE", "https://t.me/Bypass_Restricted/68")
-        buttons.ubutton("PREMIUM", "https://t.me/Bypass_Restricted/66")
-        buttons.ubutton(f"How to use bot (click)", f"https://telegram.me/Filesharing6bot?start=Z2V0LTEzODI2MDE2MDQ0MDczMA") 
+        buttons.ubutton("SOURCE", "https://t.me/Save_Restricted_contentz/19")
+        buttons.ubutton("PREMIUM", "https://t.me/Save_Restricted_contentz/18")
+        buttons.ubutton("How to use this Bot", "https://telegram.me/Filesharing6bot?start=Z2V0LTEzODI2MDE2MDQ0MDczMA") 
         reply_markup = buttons.build_menu(2)
         await message.reply_text(text=text, reply_markup=reply_markup)                             
                               
