@@ -5,11 +5,11 @@ from uuid import uuid4
 from pyrogram import Client, filters, enums
 import os
 from button_build import ButtonMaker
-from .. import bot as Invix, Bot
+from .. import bot
 from main.plugins.frontend import user_data
 from telethon import events, Button
 
-@Bot.on_message(filters.command("start"))
+@bot.on_message(filters.command("start"))
 async def start(_, message):
     if len(message.command) > 1:
         userid = message.from_user.id
@@ -33,12 +33,12 @@ async def start(_, message):
         reply_markup = buttons.build_menu(2)
         await message.reply_text(text=text, reply_markup=reply_markup)                             
 
-@Bot.on(events.NewMessage(incoming=True, pattern='/token'))                       
+@bot.on(events.NewMessage(incoming=True, pattern='/token'))                       
 async def donate(event):
     text = "♨️ Bot is based on token , So that bot owner can earn some money and you can use bot without time limit. Watch ads , use bot and respect our work." 
     await event.reply(text)
     
-@Bot.on(events.NewMessage(incoming=True, pattern='/help'))                       
+@bot.on(events.NewMessage(incoming=True, pattern='/help'))                       
 async def donate(event):
     text = "Bot supports message from:- \n Public restricted channel ✅\n Public restricted Group ❌\n Private restricted channel ❌ \n private restricted group ❌" 
     await event.reply(text)
