@@ -36,8 +36,7 @@ async def get_pvt_content(event, chat, id):
 @Invix.on(events.NewMessage(incoming=True, from_users=SUDO_USERS, pattern='/bulk'))
 async def _batch(event):
     if not event.is_private:
-        return
-      
+        return 
     if f'{event.sender_id}' in batch:
         return await event.reply("You've already started one batch, wait for it to complete, or cancel the privious ❌!")
     async with Invix.conversation(event.chat_id) as conv: 
