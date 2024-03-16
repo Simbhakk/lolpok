@@ -32,7 +32,7 @@ async def start(_, message):
         buttons.ubutton("PREMIUM", "https://t.me/Save_Restricted_contentz/18")
         buttons.ubutton("How to use this Bot", "https://telegram.me/Filesharing6bot?start=Z2V0LTEzODI2MDE2MDQ0MDczMA") 
         reply_markup = buttons.build_menu(2)
-        await message.reply_text(text=text, reply_markup=reply_markup)                             
+        await message.reply_caption(caption=caption, reply_markup=reply_markup)                             
 
 # @Bot.on_message(filters.command("token"))
                               
