@@ -33,16 +33,18 @@ async def start(_, message):
         reply_markup = buttons.build_menu(2)
         await message.reply_text(text=text, reply_markup=reply_markup)                             
 
-@Bot.on(events.NewMessage(incoming=True, pattern=f"token"))
-async def token(event):
-    text = "♨️ Bot is based on token , So that bot owner can earn some money and you can use bot without time limit. Watch ads , use bot and respect our work."
-    #await start_srb(event, text)
-    await event.reply(text)
-    
-@Bot.on(events.NewMessage(incoming=True, pattern=f"help"))
-async def help(event):
-    text = "Bot supports message from:- \n Public restricted channel ✅\n Public restricted Group ❌\n Private restricted channel ❌ \n private restricted group ❌"
-    await event.reply(text)
+@Bot.on_message(filters.command("help"))
+async def help(_, message):
+        text = "Bot supports message from:- \n Public restricted channel ✅\n Public restricted Group ❌\n Private restricted channel ❌ \n private restricted group ❌"
+        await message.reply_text(text=text)
+
+@Bot.on_message(filters.command("token"))
+async def token(_, message):
+        text = "♨️ Bot is based on token , So that bot owner can earn some money and you can use bot without time limit. Watch ads , use bot and respect our work."
+        await message.reply_text(text=text)
+
+
+
     '''
     await event.reply(text, 
                       buttons=[
