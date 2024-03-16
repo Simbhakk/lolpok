@@ -5,7 +5,7 @@ from uuid import uuid4
 from pyrogram import Client, filters, enums
 import os
 from button_build import ButtonMaker
-from .. import bot as Invix, Bot
+from .. import bot as Bot
 from main.plugins.frontend import user_data
 from telethon import events, Button
 
@@ -24,17 +24,24 @@ async def start(_, message):
         user_data[userid].update(data)
         return await message.reply_text('Token refreshed successfully! For 30 min.')    
     else:
-        photo ="https://graph.org/file/afa9243d3bb22e2f4d626.jpg",
-        caption = "👋I am a Save Restricted Bot. I can copy messages **\nFROM PUBLIC RESTRICTED CHANNEL ONLY.\n\n•Send message link from channel to clone it here.**\n\n🚨Note:- 1.Our bot is based on /token for earning.\n2.Bot doesn't copy message from private channel/group & public group."
+        text = "👋I am a Save Restricted Bot. I can copy messages **\nFROM PUBLIC RESTRICTED CHANNEL ONLY.\n\n•Send message link from channel to clone it here.**\n\n🚨Note:- 1.Our bot is based on /token for earning.\n2.Bot doesn't copy message from private channel/group & public group."
     #await start_srb(event, text)        
         buttons = ButtonMaker()             
         buttons.ubutton("SOURCE", "https://t.me/Save_Restricted_contentz/19")
         buttons.ubutton("PREMIUM", "https://t.me/Save_Restricted_contentz/18")
         buttons.ubutton("How to use this Bot", "https://telegram.me/Filesharing6bot?start=Z2V0LTEzODI2MDE2MDQ0MDczMA") 
         reply_markup = buttons.build_menu(2)
-        await message.reply_caption(caption=caption, reply_markup=reply_markup)                             
+        await message.reply_text(text=text, reply_markup=reply_markup)                             
 
-# @Bot.on_message(filters.command("token"))
+@Bot.on(events.NewMessage(incoming=True, pattern='/token'))                       
+async def donate(event):
+    text = "♨️ Bot is based on token , So that bot owner can earn some money and you can use bot without time limit. Watch ads , use bot and respect our work." 
+    await event.reply(text)
+    
+@Bot.on(events.NewMessage(incoming=True, pattern='/help'))                       
+async def donate(event):
+    text = "Bot supports message from:- \n Public restricted channel ✅\n Public restricted Group ❌\n Private restricted channel ❌ \n private restricted group ❌" 
+    await event.reply(text)
                               
     '''
     await event.reply(text, 
