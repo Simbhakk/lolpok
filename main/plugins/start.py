@@ -24,7 +24,8 @@ async def start(_, message):
         user_data[userid].update(data)
         return await message.reply_text('Token refreshed successfully! For 30 min.')    
     else:
-        text = "👋I am a Save Restricted Bot. I can copy messages **\nFROM PUBLIC RESTRICTED CHANNEL ONLY.\n\n•Send message link from channel to clone it here.**\n\n🚨Note:- 1.Our bot is based on /token for earning.\n2.Bot doesn't copy message from private channel/group & public group."
+        photo ="https://graph.org/file/afa9243d3bb22e2f4d626.jpg",
+        caption = "👋I am a Save Restricted Bot. I can copy messages **\nFROM PUBLIC RESTRICTED CHANNEL ONLY.\n\n•Send message link from channel to clone it here.**\n\n🚨Note:- 1.Our bot is based on /token for earning.\n2.Bot doesn't copy message from private channel/group & public group."
     #await start_srb(event, text)        
         buttons = ButtonMaker()             
         buttons.ubutton("SOURCE", "https://t.me/Save_Restricted_contentz/19")
