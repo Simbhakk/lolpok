@@ -13,6 +13,11 @@ from telethon import events, Button
 async def help(_, message):
         text = "Bot can copy message from:- \n Public restricted channel ✅\n Public restricted Group ❌\n Private restricted channel ❌ \n private restricted group ❌"
         await message.reply_text(text=text)
+        
+@Bot.on_message(filters.command("tutorial"))
+async def tutorial(_, message):
+        bot.send_video(message.chat.id, "BAACAgUAAxkBAAEFhFll9l1tozmgQ3DTEyQ9w2QRdU-HMAACnAsAAnIhsVfT5rV2TZE5qR4E")
+        
 
 @Bot.on_message(filters.command("token"))
 async def token(_, message):
