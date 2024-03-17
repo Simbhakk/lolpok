@@ -16,7 +16,7 @@ async def help(_, message):
         
 @Bot.on_message(filters.command("tutorial"))
 async def tutorial(_, message):
-        bot.send_video(message.chat.id, "BAACAgUAAxkBAAEFhFll9l1tozmgQ3DTEyQ9w2QRdU-HMAACnAsAAnIhsVfT5rV2TZE5qR4E")
+        Bot.send_video(message.chat.id, "BAACAgUAAxkBAAEFhFll9l1tozmgQ3DTEyQ9w2QRdU-HMAACnAsAAnIhsVfT5rV2TZE5qR4E")
         
 
 @Bot.on_message(filters.command("token"))
