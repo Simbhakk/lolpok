@@ -39,7 +39,7 @@ async def start(_, message):
         buttons = ButtonMaker()             
         buttons.ubutton("SOURCE", "https://t.me/Save_Restricted_contentz/19")
         buttons.ubutton("PREMIUM", "https://t.me/Save_Restricted_contentz/18")
-        buttons.ubutton("How to use this Bot", "https://telegram.me/Filesharing6bot?start=Z2V0LTEzODI2MDE2MDQ0MDczMA") 
+        buttons.ubutton("JOIN UPDATE CHANNEL", "https://t.me/RaJZ_bots") 
         reply_markup = buttons.build_menu(2)
         await message.reply_text(text=text, reply_markup=reply_markup)
 
