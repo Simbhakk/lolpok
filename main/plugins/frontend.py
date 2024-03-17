@@ -5,7 +5,6 @@ import logging
 from short import short_url
 from .. import bot as Invix
 from .. import userbot, Bot, TOKEN_TIMEOUT, bot_name
-from .. import FORCESUB as fs
 from main.plugins.pyroplug import get_msg
 from main.plugins.helpers import get_link, join, screenshot
 
