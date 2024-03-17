@@ -41,7 +41,7 @@ async def checking_access(event):
                 del data['time']
             data['token'] = token
             user_data[user_id].update(data)             
-            await event.reply(f'**Generate new token to use me.**', 
+            await event.reply(f'**Generate new token to use me.**\nPress /token for more information.🚦', 
                               buttons=[                              
                               [Button.url("Click Here to generate", url=short_url(f"https://telegram.me/{bot_name}?start={token}"))],
                               [Button.url("How to generate(video)", url="https://telegram.me/Filesharing6bot?start=Z2V0LTEzNzI1ODI3NTIyMDE0NQ")]])  
