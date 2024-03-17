@@ -44,7 +44,7 @@ async def check(userbot, client, link):
             return False, "**Invalid Link!**"
         except Exception as e:
             logging.info(e)
-            return False, "**First, send the channel/group link** to join bot owner in that channel."
+            return False, "**Send link from public restricted channel only. Type /help for more info.👈**"
     else:
         try:
             chat = str(link.split("/")[-2])
@@ -238,7 +238,7 @@ async def get_msg(userbot, client, sender, edit_id, msg_link, i, file_n):
             await upm.delete()
             return None
         except (ChannelBanned, ChannelInvalid, ChannelPrivate, ChatIdInvalid, ChatInvalid):
-            await client.edit_message_text(sender, edit_id, "**First, send the channel/group link** to join bot owner in that channel.")
+            await client.edit_message_text(sender, edit_id, "**Send link from public restricted channel only. Type /help for more info.👈**")
             return None
     else:
         edit = await client.edit_message_text(sender, edit_id, "**Cloning**")
