@@ -14,10 +14,6 @@ async def help(_, message):
         text = "Bot can copy message from:- \n Public restricted channel ✅\n Public restricted Group ❌\n Private restricted channel ❌ \n private restricted group ❌"
         await message.reply_text(text=text)
         
-@Bot.on_message(filters.command("tutorial"))
-async def tutorial(_, message):
-        await Bot.send_video("message.chat.id,", "BAACAgUAAxkBAAEFhFll9l1tozmgQ3DTEyQ9w2QRdU-HMAACnAsAAnIhsVfT5rV2TZE5qR4E", caption="video caption")
-
 @Bot.on_message(filters.command("token"))
 async def token(_, message):
         text = "♨️ Bot is based on token , So that bot owner can earn some money and you can use bot without time limit. Watch ads , use bot and respect our work.\n Thanks 🙌"
