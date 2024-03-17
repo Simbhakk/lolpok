@@ -34,7 +34,7 @@ async def start(_, message):
         user_data[userid].update(data)
         return await message.reply_text('Token refreshed successfully! For 30 min.')    
     else:
-        text = "👋𝗜 𝗮𝗺 𝗮 𝗦𝗮𝘃𝗲 𝗥𝗲𝘀𝘁𝗿𝗶𝗰𝘁𝗲𝗱 𝗕𝗼𝘁. 𝗜 𝗰𝗮𝗻 𝗰𝗼𝗽𝘆 𝗺𝗲𝘀𝘀𝗮𝗴𝗲𝘀 𝗙𝗥𝗢𝗠 𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗦𝗧𝗥𝗜𝗖𝗧𝗘𝗗 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 𝗢𝗡𝗟𝗬.\n\n•𝙎𝙚𝙣𝙙 𝙢𝙚𝙨𝙨𝙖𝙜𝙚 𝙡𝙞𝙣𝙠 𝙛𝙧𝙤𝙢 𝙘𝙝𝙖𝙣𝙣𝙚𝙡 𝙩𝙤 𝙘𝙡𝙤𝙣𝙚 𝙞𝙩 𝙝𝙚𝙧𝙚.\n\n🚨Note:- Nᴏᴛᴇ:- 𝟷.Oᴜʀ ʙᴏᴛ ɪs ʙᴀsᴇᴅ ᴏɴ /ᴛᴏᴋᴇɴ ғᴏʀ ᴇᴀʀɴɪɴɢ.\n𝟸.Bᴏᴛ ᴅᴏᴇsɴ'ᴛ ᴄᴏᴘʏ ᴍᴇssᴀɢᴇ ғʀᴏᴍ ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀɴɴᴇʟ/\nɢʀᴏᴜᴘ & ᴘᴜʙʟɪᴄ ɢʀᴏᴜᴘ. Tʏᴘᴇ /ʜᴇʟᴘ ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏ."
+        text = "👋,𝗜 𝗮𝗺 𝗮 𝗦𝗮𝘃𝗲 𝗥𝗲𝘀𝘁𝗿𝗶𝗰𝘁𝗲𝗱 𝗕𝗼𝘁. 𝗜 𝗰𝗮𝗻 𝗰𝗼𝗽𝘆 𝗺𝗲𝘀𝘀𝗮𝗴𝗲𝘀 𝗙𝗥𝗢𝗠 𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗦𝗧𝗥𝗜𝗖𝗧𝗘𝗗 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 𝗢𝗡𝗟𝗬.\n\n•𝙎𝙚𝙣𝙙 𝙢𝙚𝙨𝙨𝙖𝙜𝙚 𝙡𝙞𝙣𝙠 𝙛𝙧𝙤𝙢 𝙘𝙝𝙖𝙣𝙣𝙚𝙡 𝙩𝙤 𝙘𝙡𝙤𝙣𝙚 𝙞𝙩 𝙝𝙚𝙧𝙚.\n\n🚨Note:- 𝟷.Oᴜʀ ʙᴏᴛ ɪs ʙᴀsᴇᴅ ᴏɴ /token ғᴏʀ ᴇᴀʀɴɪɴɢ.\n𝟸.Bᴏᴛ ᴅᴏᴇsɴ'ᴛ ᴄᴏᴘʏ ᴍᴇssᴀɢᴇ ғʀᴏᴍ ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀɴɴᴇʟ/\nɢʀᴏᴜᴘ & ᴘᴜʙʟɪᴄ ɢʀᴏᴜᴘ. Tʏᴘᴇ /help ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏ."
     #await start_srb(event, text)        
         buttons = ButtonMaker()             
         buttons.ubutton("SOURCE", "https://t.me/Save_Restricted_contentz/19")
