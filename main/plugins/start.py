@@ -4,10 +4,10 @@ from time import time
 from uuid import uuid4
 from pyrogram import Client, filters, enums
 import os
-from button_build import ButtonMaker
+#from button_build import ButtonMaker
 from .. import bot as Invix, Bot
 from main.plugins.frontend import user_data
-from telethon import events, Button
+#from telethon import events, Button
 
 @Bot.on_message(filters.command("help"))
 async def help(_, message):
@@ -34,20 +34,7 @@ async def start(_, message):
         user_data[userid].update(data)
         return await message.reply_text('Token refreshed successfully! For 30 min.')    
     else:
-        text = "👋,𝗜 𝗮𝗺 𝗮 𝗦𝗮𝘃𝗲 𝗥𝗲𝘀𝘁𝗿𝗶𝗰𝘁𝗲𝗱 𝗕𝗼𝘁. 𝗜 𝗰𝗮𝗻 𝗰𝗼𝗽𝘆 𝗺𝗲𝘀𝘀𝗮𝗴𝗲𝘀 𝗙𝗥𝗢𝗠 𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗦𝗧𝗥𝗜𝗖𝗧𝗘𝗗 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 𝗢𝗡𝗟𝗬.\n\n•𝙎𝙚𝙣𝙙 𝙢𝙚𝙨𝙨𝙖𝙜𝙚 𝙡𝙞𝙣𝙠 𝙛𝙧𝙤𝙢 𝙘𝙝𝙖𝙣𝙣𝙚𝙡 𝙩𝙤 𝙘𝙡𝙤𝙣𝙚 𝙞𝙩 𝙝𝙚𝙧𝙚.\n\n🚨Note:- 𝟷.Oᴜʀ ʙᴏᴛ ɪs ʙᴀsᴇᴅ ᴏɴ /token ғᴏʀ ᴇᴀʀɴɪɴɢ.\n𝟸.Bᴏᴛ ᴅᴏᴇsɴ'ᴛ ᴄᴏᴘʏ ᴍᴇssᴀɢᴇ ғʀᴏᴍ ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀɴɴᴇʟ/\nɢʀᴏᴜᴘ & ᴘᴜʙʟɪᴄ ɢʀᴏᴜᴘ. Tʏᴘᴇ /help ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏ."
-    #await start_srb(event, text)        
-        buttons = ButtonMaker()             
-        buttons.ubutton("SOURCE", "https://t.me/Save_Restricted_contentz/19")
-        buttons.ubutton("PREMIUM", "https://t.me/Save_Restricted_contentz/18")
-        buttons.ubutton("JOIN UPDATE CHANNEL", "https://t.me/RaJZ_bots") 
-        reply_markup = buttons.build_menu(2)
-        await message.reply_text(text=text, reply_markup=reply_markup)
-
-    '''
-    await event.reply(text, 
-                      buttons=[
-                              [Button.inline("SET THUMB.", data="set"),
-                               Button.inline("REM THUMB.", data="rem")],
-                              [Button.url("Maintained and Modified by", url="t.me/Raj02_bots")]])
-    '''
+        
+            text = "👋,𝗜 𝗮𝗺 𝗮 𝗦𝗮𝘃𝗲 𝗥𝗲𝘀𝘁𝗿𝗶𝗰𝘁𝗲𝗱 𝗕𝗼𝘁. 𝗜 𝗰𝗮𝗻 𝗰𝗼𝗽𝘆 𝗺𝗲𝘀𝘀𝗮𝗴𝗲𝘀 𝗙𝗥𝗢𝗠 𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗦𝗧𝗥𝗜𝗖𝗧𝗘𝗗 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 𝗢𝗡𝗟𝗬.\n\n•𝙎𝙚𝙣𝙙 𝙢𝙚𝙨𝙨𝙖𝙜𝙚 𝙡𝙞𝙣𝙠 𝙛𝙧𝙤𝙢 𝙘𝙝𝙖𝙣𝙣𝙚𝙡 𝙩𝙤 𝙘𝙡𝙤𝙣𝙚 𝙞𝙩 𝙝𝙚𝙧𝙚.\n\n🚨Note:- 𝟷.Oᴜʀ ʙᴏᴛ ɪs ʙᴀsᴇᴅ ᴏɴ /token ғᴏʀ ᴇᴀʀɴɪɴɢ.\n𝟸.Bᴏᴛ ᴅᴏᴇsɴ'ᴛ ᴄᴏᴘʏ ᴍᴇssᴀɢᴇ ғʀᴏᴍ ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀɴɴᴇʟ/\nɢʀᴏᴜᴘ & ᴘᴜʙʟɪᴄ ɢʀᴏᴜᴘ. Tʏᴘᴇ /help ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏ."
+            await message.reply_text(text=text)
     
