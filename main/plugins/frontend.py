@@ -7,8 +7,8 @@ from .. import bot as Invix
 from .. import userbot, Bot, TOKEN_TIMEOUT, bot_name
 from main.plugins.pyroplug import get_msg
 from main.plugins.helpers import get_link, join, screenshot
-
-from telethon import events, Button
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+#from telethon import events, Button
 from pyrogram.errors import FloodWait
 from uuid import uuid4
 
@@ -40,10 +40,12 @@ async def checking_access(event):
                 del data['time']
             data['token'] = token
             user_data[user_id].update(data)             
-            await event.reply(f'**Generate new token to use me.**\nPress /token for more information.🚦', 
-                              buttons=[                              
-                              [Button.url("Click to Generate Token", url=short_url(f"https://telegram.me/{bot_name}?start={token}"))],
-                              [Button.url("How to generate (video)", url="https://youtube.com/shorts/t7iIw-dd4YQ?si=P53--dRSdHxGzJ6d")]])  
+            keyboard = InlineKeyboardMarkup(
+                inline_keyboard=[
+                    [InlineKeyboardButton(text="Click me", url=short_url(f"https://telegram.me/{bot_name}?start={token}"))]
+                ]
+            )
+            await event.reply_text("Generate New token to use me.😊", reply_markup=keyboard)
             return False
     return True, None
 
