@@ -8,7 +8,7 @@ from .. import userbot, Bot, TOKEN_TIMEOUT, bot_name
 from main.plugins.pyroplug import get_msg
 from main.plugins.helpers import get_link, join, screenshot
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-#from telethon import events, Button
+from telethon import events
 from pyrogram.errors import FloodWait
 from uuid import uuid4
 
