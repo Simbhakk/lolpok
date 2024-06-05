@@ -45,7 +45,7 @@ async def checking_access(event):
                     [InlineKeyboardButton(text="Click me", url=short_url(f"https://telegram.me/{bot_name}?start={token}"))]
                 ]
             )
-            await event.reply_text("Generate New token to use me.😊", reply_markup=keyboard)
+            await event.reply("Generate New token to use me.😊", reply_markup=keyboard)
             return False
     return True, None
 
