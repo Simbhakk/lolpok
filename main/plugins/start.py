@@ -2,12 +2,12 @@
 
 from time import time
 from uuid import uuid4
+from 
 from pyrogram import Client, filters, enums
 import os
 #from button_build import ButtonMaker
-from .. import bot as Invix, Bot
+from .. import bot as Invix, Bot, TOKEN_TIMEOUT
 from main.plugins.frontend import user_data
-#from telethon import events, Button
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 @Bot.on_message(filters.command("help"))
@@ -33,14 +33,15 @@ async def start(_, message):
         data['token'] = str(uuid4())
         data['time'] = time()
         user_data[userid].update(data)
-        return await message.reply_text('Token refreshed successfully! For 30 min.')    
+        token_refresh_minutes = int(TOKEN_TIMEOUT) // 60  # Convert seconds to minutes
+        return bot.send_message(message.chat.id, f'Token refresh successfully for {token_refresh_minutes} min.')
     else:
         
-            text = "👋,𝗜 𝗮𝗺 𝗮 𝗦𝗮𝘃𝗲 𝗥𝗲𝘀𝘁𝗿𝗶𝗰𝘁𝗲𝗱 𝗕𝗼𝘁. 𝗜 𝗰𝗮𝗻 𝗰𝗼𝗽𝘆 𝗺𝗲𝘀𝘀𝗮𝗴𝗲𝘀 𝗙𝗥𝗢𝗠 𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗦𝗧𝗥𝗜𝗖𝗧𝗘𝗗 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 𝗢𝗡𝗟𝗬.\n\n•𝙎𝙚𝙣𝙙 𝙢𝙚𝙨𝙨𝙖𝙜𝙚 𝙡𝙞𝙣𝙠 𝙛𝙧𝙤𝙢 𝙘𝙝𝙖𝙣𝙣𝙚𝙡 𝙩𝙤 𝙘𝙡𝙤𝙣𝙚 𝙞𝙩 𝙝𝙚𝙧𝙚.\n\n🚨Note:- 𝟷.Oᴜʀ ʙᴏᴛ ɪs ʙᴀsᴇᴅ ᴏɴ /token ғᴏʀ ᴇᴀʀɴɪɴɢ.\n𝟸.Bᴏᴛ ᴅᴏᴇsɴ'ᴛ ᴄᴏᴘʏ ᴍᴇssᴀɢᴇ ғʀᴏᴍ ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀɴɴᴇʟ/\nɢʀᴏᴜᴘ & ᴘᴜʙʟɪᴄ ɢʀᴏᴜᴘ. Tʏᴘᴇ /help ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏ.",
+            text = """𝗜 𝗮𝗺 𝗮 𝗦𝗮𝘃𝗲 𝗥𝗲𝘀𝘁𝗿𝗶𝗰𝘁𝗲𝗱 𝗕𝗼𝘁. 𝗜 𝗰𝗮𝗻 𝗰𝗼𝗽𝘆 𝗺𝗲𝘀𝘀𝗮𝗴𝗲𝘀 𝗙𝗥𝗢𝗠 𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗦𝗧𝗥𝗜𝗖𝗧𝗘𝗗 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 𝗢𝗡𝗟𝗬.\n\n•𝙎𝙚𝙣𝙙 𝙢𝙚𝙨𝙨𝙖𝙜𝙚 𝙡𝙞𝙣𝙠 𝙛𝙧𝙤𝙢 𝙘𝙝𝙖𝙣𝙣𝙚𝙡 𝙩𝙤 𝙘𝙡𝙤𝙣𝙚 𝙞𝙩 𝙝𝙚𝙧𝙚.\n\n🚨Note:- 𝟷.Oᴜʀ ʙᴏᴛ ɪs ʙᴀsᴇᴅ ᴏɴ /token ғᴏʀ ᴇᴀʀɴɪɴɢ.\n𝟸.Bᴏᴛ ᴅᴏᴇsɴ'ᴛ ᴄᴏᴘʏ ᴍᴇssᴀɢᴇ ғʀᴏᴍ ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀɴɴᴇʟ/\nɢʀᴏᴜᴘ & ᴘᴜʙʟɪᴄ ɢʀᴏᴜᴘ. Tʏᴘᴇ /help ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏ.""",
             keyboard = InlineKeyboardMarkup(
                 inline_keyboard=[
                     [InlineKeyboardButton(text="Join Update channel ❤️", url="https://t.me/Save_Restricted_contentz")]
                 ]
             )
-            await message.reply_text(text=text, reply_markup=keyboard)
+            await message.reply_text(text, reply_markup=keyboard)
     
