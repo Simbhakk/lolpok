@@ -5,5 +5,3 @@ tgcrypto
 Pyrogram==2.0.93
 cloudscraper
 psutil
-opencv-python-headless
-python-decouple
